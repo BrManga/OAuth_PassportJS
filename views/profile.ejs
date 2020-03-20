@@ -38,6 +38,10 @@
         padding: 0 10px;
         color: #333;
       }
+      img{
+          height: 100px;
+          width: 100px;
+      }
     </style>
   </head>
   <body>
@@ -63,5 +67,8 @@
       <h1>PROFILE PAGE</h1>
       <h2>Welcome, <%= user.username %></h2>
     </header>
+    <main>
+        <img src="<%= user.thumbnail %>" alt="user_image">
+    </main>
   </body>
 </html>

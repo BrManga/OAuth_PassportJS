@@ -19,6 +19,8 @@ passport.use(
       clientSecret: keys.google.clientSecret
     },
     (accessToken, refreshToken, profile, done) => {
+      console.log(profile);
+
       User.findOne({ googleId: profile.id }).then(currentUser => {
         if (currentUser) {
           console.log("Already in DB");
@@ -27,7 +29,8 @@ passport.use(
           //passport callback
           new User({
             username: profile.displayName,
-            googleId: profile.id
+            googleId: profile.id,
+            thumbnail: profile._json.picture
           })
             .save()
             .then(newUser => {
